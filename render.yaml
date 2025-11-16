@@ -1,12 +1,13 @@
-name: kambaz-node-server-app
-type: web
-env: node
-buildCommand: npm install
-startCommand: npm start
-envVars:
-  - key: SERVER_ENV
-    value: production
-  - key: CLIENT_URL
-    value: https://kambaz-next-js-david-conr-git-036c70-davidscottconrads-projects.vercel.app/Account/Signin
-  - key: SERVER_URL
-    value: kambaz-node-server-app-cs5610-sp25.onrender.com
+services:
+  - type: web
+    name: kambaz-node-server-app
+    runtime: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: SERVER_ENV
+        value: production
+      - key: CLIENT_URL
+        value: https://kambaz-next-js-david-conr-git-036c70-davidscottconrads-projects.vercel.app/Account/Signin
+      - key: SERVER_URL
+        value: https://kambaz-node-server-app-cs5610-sp25.onrender.com
