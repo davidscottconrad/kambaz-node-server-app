@@ -1,0 +1,354 @@
+const assignments = [
+    {
+        "_id": "A101",
+        "name": "A1 - Rocket Propulsion Basics",
+        "course": "RS101",
+        "available": "2023-05-06",
+        "availableUntil": "2023-05-13",
+        "due": "2023-05-13",
+        "points": 100,
+        "module": "M101",
+        "description": "Introduction to rocket propulsion principles and basic calculations.",
+        "displayGradeAs": "percentage",
+        "submissionType": "online",
+        "onlineEntryOptions": [
+            "Text Entry",
+            "File Upload"
+        ],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A102",
+        "name": "A2 - Fuel Efficiency Calculations",
+        "course": "RS101",
+        "available": "2023-05-07",
+        "availableUntil": "2023-05-16",
+        "due": "2023-05-16",
+        "points": 100,
+        "module": "M102",
+        "description": "Calculate and analyze fuel efficiency for various rocket engines.",
+        "displayGradeAs": "points",
+        "submissionType": "online",
+        "onlineEntryOptions": [
+            "Text Entry",
+            "Website URL"
+        ],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A103",
+        "name": "A3 - Nozzle Optimization Report",
+        "course": "RS101",
+        "available": "2023-05-08",
+        "availableUntil": "2023-05-18",
+        "due": "2023-05-18",
+        "points": 100,
+        "module": "M103",
+        "description": "Write a report on optimizing rocket nozzle design for performance.",
+        "displayGradeAs": "points",
+        "submissionType": "online",
+        "onlineEntryOptions": [
+            "File Upload"
+        ],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A104",
+        "name": "A4 - Propellant Chemistry Lab",
+        "course": "RS101",
+        "available": "2023-05-10",
+        "availableUntil": "2023-05-20",
+        "due": "2023-05-20",
+        "points": 100,
+        "module": "M104",
+        "description": "Lab assignment on the chemistry of rocket propellants.",
+        "displayGradeAs": "percentage",
+        "submissionType": "in-person",
+        "onlineEntryOptions": [],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A201",
+        "name": "A1 - Aerodynamic Flow Analysis",
+        "course": "RS102",
+        "available": "2023-05-06",
+        "availableUntil": "2023-05-13",
+        "due": "2023-05-13",
+        "points": 100,
+        "module": "M201",
+        "description": "Analyze airflow patterns over various airfoil shapes.",
+        "displayGradeAs": "percentage",
+        "submissionType": "online",
+        "onlineEntryOptions": [
+            "Text Entry",
+            "Media Recordings"
+        ],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A202",
+        "name": "A2 - Shock Wave Report",
+        "course": "RS102",
+        "available": "2023-05-09",
+        "availableUntil": "2023-05-17",
+        "due": "2023-05-17",
+        "points": 100,
+        "module": "M202",
+        "description": "Report on shock wave formation and effects in aerodynamics.",
+        "displayGradeAs": "points",
+        "submissionType": "online",
+        "onlineEntryOptions": [
+            "File Upload"
+        ],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A203",
+        "name": "A3 - Airfoil Design Project",
+        "course": "RS102",
+        "available": "2023-05-11",
+        "availableUntil": "2023-05-19",
+        "due": "2023-05-19",
+        "points": 100,
+        "module": "M203",
+        "description": "Design and test an airfoil for optimal lift and drag.",
+        "displayGradeAs": "percentage",
+        "submissionType": "online",
+        "onlineEntryOptions": [
+            "Text Entry",
+            "Website URL",
+            "File Upload"
+        ],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A301",
+        "name": "A1 - Spacecraft Structure Analysis",
+        "course": "RS103",
+        "available": "2023-05-06",
+        "availableUntil": "2023-05-13",
+        "due": "2023-05-13",
+        "points": 100,
+        "module": "M301",
+        "description": "Analyze the structural components of spacecraft.",
+        "displayGradeAs": "points",
+        "submissionType": "online",
+        "onlineEntryOptions": [
+            "Text Entry"
+        ],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A302",
+        "name": "A2 - Thermal Control Design",
+        "course": "RS103",
+        "available": "2023-05-09",
+        "availableUntil": "2023-05-17",
+        "due": "2023-05-17",
+        "points": 100,
+        "module": "M302",
+        "description": "Design a thermal control system for a spacecraft.",
+        "displayGradeAs": "percentage",
+        "submissionType": "online",
+        "onlineEntryOptions": [
+            "File Upload",
+            "Media Recordings"
+        ],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A303",
+        "name": "A3 - Payload Integration Plan",
+        "course": "RS103",
+        "available": "2023-05-12",
+        "availableUntil": "2023-05-20",
+        "due": "2023-05-20",
+        "points": 100,
+        "module": "M303",
+        "description": "Plan the integration of payloads into a spacecraft.",
+        "displayGradeAs": "points",
+        "submissionType": "online",
+        "onlineEntryOptions": [
+            "Text Entry",
+            "File Upload"
+        ],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A401",
+        "name": "A1 - Hydrocarbon Identification",
+        "course": "RS104",
+        "available": "2023-05-06",
+        "availableUntil": "2023-05-13",
+        "due": "2023-05-13",
+        "points": 100,
+        "module": "M401",
+        "description": "Identify and classify hydrocarbons in lab samples.",
+        "displayGradeAs": "percentage",
+        "submissionType": "online",
+        "onlineEntryOptions": [
+            "Text Entry",
+            "Student Annotation"
+        ],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A402",
+        "name": "A2 - Organic Synthesis Lab",
+        "course": "RS104",
+        "available": "2023-05-10",
+        "availableUntil": "2023-05-18",
+        "due": "2023-05-18",
+        "points": 100,
+        "module": "M402",
+        "description": "Perform organic synthesis and document results.",
+        "displayGradeAs": "points",
+        "submissionType": "in-person",
+        "onlineEntryOptions": [],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A501",
+        "name": "A1 - Coordination Chemistry Worksheet",
+        "course": "RS105",
+        "available": "2023-05-07",
+        "availableUntil": "2023-05-14",
+        "due": "2023-05-14",
+        "points": 100,
+        "module": "M501",
+        "description": "Worksheet on coordination compounds and their properties.",
+        "displayGradeAs": "percentage",
+        "submissionType": "online",
+        "onlineEntryOptions": [
+            "Text Entry",
+            "File Upload"
+        ],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A502",
+        "name": "A2 - Metal Complex Synthesis",
+        "course": "RS105",
+        "available": "2023-05-11",
+        "availableUntil": "2023-05-19",
+        "due": "2023-05-19",
+        "points": 100,
+        "module": "M502",
+        "description": "Synthesize and analyze metal complexes in the lab.",
+        "displayGradeAs": "points",
+        "submissionType": "in-person",
+        "onlineEntryOptions": [],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A601",
+        "name": "A1 - Thermodynamics Problem Set",
+        "course": "RS106",
+        "available": "2023-05-08",
+        "availableUntil": "2023-05-15",
+        "due": "2023-05-15",
+        "points": 100,
+        "module": "M601",
+        "description": "Solve thermodynamics problems related to chemical reactions.",
+        "displayGradeAs": "percentage",
+        "submissionType": "online",
+        "onlineEntryOptions": [
+            "Text Entry",
+            "Website URL"
+        ],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A602",
+        "name": "A2 - Quantum Mechanics Quiz",
+        "course": "RS106",
+        "available": "2023-05-12",
+        "availableUntil": "2023-05-20",
+        "due": "2023-05-20",
+        "points": 100,
+        "module": "M602",
+        "description": "Quiz on quantum mechanics concepts and calculations.",
+        "displayGradeAs": "points",
+        "submissionType": "online",
+        "onlineEntryOptions": [
+            "Text Entry",
+            "File Upload"
+        ],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A701",
+        "name": "A1 - Elvish Translation Exercise",
+        "course": "RS107",
+        "available": "2023-05-06",
+        "availableUntil": "2023-05-13",
+        "due": "2023-05-13",
+        "points": 100,
+        "module": "M701",
+        "description": "Translate passages from English to Elvish.",
+        "displayGradeAs": "percentage",
+        "submissionType": "online",
+        "onlineEntryOptions": [
+            "Text Entry",
+            "Media Recordings"
+        ],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A702",
+        "name": "A2 - Dwarvish Script Analysis",
+        "course": "RS107",
+        "available": "2023-05-10",
+        "availableUntil": "2023-05-18",
+        "due": "2023-05-18",
+        "points": 100,
+        "module": "M702",
+        "description": "Analyze and interpret Dwarvish scripts.",
+        "displayGradeAs": "points",
+        "submissionType": "online",
+        "onlineEntryOptions": [
+            "Text Entry",
+            "Student Annotation"
+        ],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A801",
+        "name": "A1 - Council of Elrond Case Study",
+        "course": "RS108",
+        "available": "2023-05-07",
+        "availableUntil": "2023-05-14",
+        "due": "2023-05-14",
+        "points": 90,
+        "module": "M801",
+        "description": "Case study on the Council of Elrond and its diplomatic impact.",
+        "displayGradeAs": "points",
+        "submissionType": "online",
+        "onlineEntryOptions": [
+            "Text Entry",
+            "File Upload"
+        ],
+        "assignTo": "Everyone"
+    },
+    {
+        "_id": "A802",
+        "name": "A2 - Multi-species Diplomacy Simulation",
+        "course": "RS108",
+        "available": "2023-05-11",
+        "availableUntil": "2023-05-19",
+        "due": "2023-05-19",
+        "points": 100,
+        "module": "M802",
+        "description": "Simulate diplomatic negotiations between Middle-earth species.",
+        "displayGradeAs": "points",
+        "submissionType": "online",
+        "onlineEntryOptions": [
+            "Text Entry",
+            "Website URL",
+            "File Upload"
+        ],
+        "assignTo": "Everyone"
+    }
+]
+
+export default assignments;

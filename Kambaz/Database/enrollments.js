@@ -1,0 +1,260 @@
+const enrollments = [
+    {
+        "_id": "123",
+        "user": "123",
+        "course": "RS101",
+        "username": "iron_man",
+        "password": "stark123",
+        "firstName": "Tony",
+        "lastName": "Stark",
+        "email": "tony@stark.com",
+        "dob": "1970-05-29T00:00:00.000Z",
+        "role": "FACULTY",
+        "loginId": "001234561S",
+        "section": "S101",
+        "lastActivity": "2020-10-01",
+        "totalActivity": "10:21:32"
+    },
+    {
+        "_id": "234",
+        "user": "234",
+        "course": "RS102",
+        "username": "dark_knight",
+        "password": "wayne123",
+        "firstName": "Bruce",
+        "lastName": "Wayne",
+        "email": "bruce@wayne.com",
+        "dob": "1972-02-19",
+        "role": "STUDENT",
+        "loginId": "001234562S",
+        "section": "S101",
+        "lastActivity": "2020-11-02",
+        "totalActivity": "15:32:43"
+    },
+    {
+        "_id": "345",
+        "user": "345",
+        "course": "RS104",
+        "username": "black_widow",
+        "password": "romanoff123",
+        "firstName": "Natasha",
+        "lastName": "Romanoff",
+        "email": "natasha@avengers.com",
+        "dob": "1984-11-22",
+        "role": "TA",
+        "loginId": "001234564S",
+        "section": "S101",
+        "lastActivity": "2020-11-05",
+        "totalActivity": "13:23:34"
+    },
+    {
+        "_id": "456",
+        "user": "456",
+        "course": "RS103",
+        "username": "thor_odinson",
+        "password": "mjolnir123",
+        "firstName": "Thor",
+        "lastName": "Odinson",
+        "email": "thor@asgard.com",
+        "dob": "982-05-25",
+        "role": "STUDENT",
+        "loginId": "001234565S",
+        "section": "S101",
+        "lastActivity": "2020-12-01",
+        "totalActivity": "11:22:33"
+    },
+    {
+        "_id": "567",
+        "user": "567",
+        "course": "RS106",
+        "username": "hulk_smash",
+        "password": "banner123",
+        "firstName": "Bruce",
+        "lastName": "Banner",
+        "email": "bruce@avengers.com",
+        "dob": "1969-12-18",
+        "role": "STUDENT",
+        "loginId": "001234566S",
+        "section": "S101",
+        "lastActivity": "2020-12-01",
+        "totalActivity": "22:33:44"
+    },
+    {
+        "_id": "678",
+        "user": "678",
+        "course": "RS107",
+        "username": "ring_bearer",
+        "password": "shire123",
+        "firstName": "Frodo",
+        "lastName": "Baggins",
+        "email": "frodo@shire.com",
+        "dob": "1368-09-22",
+        "role": "FACULTY",
+        "loginId": "001234567S",
+        "section": "S101",
+        "lastActivity": "2020-12-02",
+        "totalActivity": "44:33:22"
+    },
+    {
+        "_id": "789",
+        "user": "789",
+        "course": "RS108",
+        "username": "strider",
+        "password": "aragorn123",
+        "firstName": "Aragorn",
+        "lastName": "Elessar",
+        "email": "aragorn@gondor.com",
+        "dob": "2931-03-01",
+        "role": "TA",
+        "loginId": "001234568S",
+        "section": "S101",
+        "lastActivity": "2020-12-04",
+        "totalActivity": "12:23:34"
+    },
+    {
+        "_id": "890",
+        "user": "890",
+        "course": "RS107",
+        "username": "elf_archer",
+        "password": "legolas123",
+        "firstName": "Legolas",
+        "lastName": "Greenleaf",
+        "email": "legolas@mirkwood.com",
+        "dob": "2879-07-15",
+        "role": "STUDENT",
+        "loginId": "001234569S",
+        "section": "S101",
+        "lastActivity": "2020-11-11",
+        "totalActivity": "21:32:43"
+    },
+    {
+        "_id": "777",
+        "user": "777",
+        "course": "RS101",
+        "username": "ada",
+        "password": "123",
+        "firstName": "Ada",
+        "lastName": "Lovelace",
+        "email": "ada@lovelace.com",
+        "dob": "1815-12-15",
+        "role": "ADMIN",
+        "loginId": "002143650S",
+        "section": "S101",
+        "lastActivity": "1852-11-27",
+        "totalActivity": "21:32:43"
+    },
+    {
+        "_id": "901",
+        "user": "654f9ec2ea7ead465908d1e3",
+        "course": "RS107",
+        "role": "FACULTY",
+        "section": "S101"
+    },
+    {
+        "_id": "902",
+        "user": "654f9ec2ea7ead465908d1e3",
+        "course": "RS108",
+        "role": "FACULTY",
+        "section": "S101"
+    },
+    {
+        "_id": "903",
+        "user": "123",
+        "course": "RS103",
+        "role": "FACULTY",
+        "section": "S102"
+    },
+    {
+        "_id": "904",
+        "user": "123",
+        "course": "RS106",
+        "role": "FACULTY",
+        "section": "S101"
+    },
+    {
+        "_id": "905",
+        "user": "234",
+        "course": "RS101",
+        "role": "STUDENT",
+        "section": "S101"
+    },
+    {
+        "_id": "906",
+        "user": "234",
+        "course": "RS104",
+        "role": "STUDENT",
+        "section": "S101"
+    },
+    {
+        "_id": "907",
+        "user": "345",
+        "course": "RS101",
+        "role": "TA",
+        "section": "S101"
+    },
+    {
+        "_id": "908",
+        "user": "345",
+        "course": "RS106",
+        "role": "TA",
+        "section": "S101"
+    },
+    {
+        "_id": "909",
+        "user": "456",
+        "course": "RS101",
+        "role": "STUDENT",
+        "section": "S101"
+    },
+    {
+        "_id": "910",
+        "user": "456",
+        "course": "RS102",
+        "role": "STUDENT",
+        "section": "S101"
+    },
+    {
+        "_id": "911",
+        "user": "567",
+        "course": "RS101",
+        "role": "STUDENT",
+        "section": "S101"
+    },
+    {
+        "_id": "912",
+        "user": "678",
+        "course": "RS108",
+        "role": "FACULTY",
+        "section": "S101"
+    },
+    {
+        "_id": "913",
+        "user": "789",
+        "course": "RS107",
+        "role": "TA",
+        "section": "S101"
+    },
+    {
+        "_id": "914",
+        "user": "890",
+        "course": "RS108",
+        "role": "STUDENT",
+        "section": "S101"
+    },
+    {
+        "_id": "915",
+        "user": "777",
+        "course": "RS102",
+        "role": "ADMIN",
+        "section": "S101"
+    },
+    {
+        "_id": "916",
+        "user": "654f9ec2ea7ead465908d1e3",
+        "course": "RS101",
+        "role": "FACULTY",
+        "section": "S101"
+    }
+]
+
+export default enrollments;
