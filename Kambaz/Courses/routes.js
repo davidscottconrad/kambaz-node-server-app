@@ -14,6 +14,8 @@ export default function CourseRoutes(app, db) {
         let { userId } = req.params;
         if (userId === "current") {
             const currentUser = req.session["currentUser"];
+            console.log("Session data:", req.session); // Add this for debugging
+            console.log("Current user:", currentUser); // Add this for debugging
             if (!currentUser) {
                 res.sendStatus(401);
                 return;
@@ -48,8 +50,8 @@ export default function CourseRoutes(app, db) {
         res.send(status);
     };
 
+    app.get("/api/users/:userId/courses", findCoursesForEnrolledUser);  // Move this BEFORE the post route
     app.post("/api/users/current/courses", createCourse);
-    app.get("/api/users/:userId/courses", findCoursesForEnrolledUser);
     app.get("/api/courses", findAllCourses);
     app.delete("/api/courses/:courseId", deleteCourse);
     app.put("/api/courses/:courseId", updateCourse);
