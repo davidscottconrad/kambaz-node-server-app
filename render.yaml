@@ -8,6 +8,6 @@ services:
       - key: SERVER_ENV
         value: production
       - key: CLIENT_URL
-        value: https://kambaz-next-js-david-conr-git-036c70-davidscottconrads-projects.vercel.app/Account/Signin
+        value: https://kambaz-next-js-david-conr-git-036c70-davidscottconrads-projects.vercel.app
       - key: SERVER_URL
         value: https://kambaz-node-server-app-cs5610-sp25.onrender.com
