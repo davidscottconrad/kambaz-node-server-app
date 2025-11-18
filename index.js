@@ -14,7 +14,23 @@ const app = express();
 app.use(
     cors({
         credentials: true,
-        origin: process.env.CLIENT_URL || "http://localhost:3000",
+        origin: function (origin, callback) {
+            // Allow requests with no origin (mobile apps, Postman, etc.)
+            if (!origin) return callback(null, true);
+
+            // Allow localhost for development
+            if (origin.includes('localhost')) return callback(null, true);
+
+            // Allow main production URL from env variable
+            if (origin === process.env.CLIENT_URL) return callback(null, true);
+
+            // Allow all Vercel preview deployments
+            if (origin.match(/^https:\/\/kambaz-next-js-david-conrad.*\.vercel\.app$/)) {
+                return callback(null, true);
+            }
+
+            callback(new Error('Not allowed by CORS'));
+        }
     })
 );
 const sessionOptions = {
