@@ -1,25 +1,13 @@
+import model from "./model.js";
 import { v4 as uuidv4 } from "uuid";
-export default function UsersDao(db) {
-    let { users } = db;
-    const createUser = (user) => {
-        const newUser = { ...user, _id: uuidv4() };
-        users = [...users, newUser];
-        return newUser;
-    };
-    const findAllUsers = () => users;
-    const findUserById = (userId) => users.find((user) => user._id === userId);
-    const findUserByUsername = (username) => users.find((user) => user.username === username);
-    const findUserByCredentials = (username, password) =>
-        users.find((user) => user.username === username && user.password === password);
-    const updateUser = (userId, userUpdates) => {
-        console.log("Updating user:", userId, userUpdates);
-        users = users.map((u) =>
-            u._id === userId ? { ...u, ...userUpdates } : u
-        );
-        return users.find((u) => u._id === userId);
-    };
-    const deleteUser = (userId) => (users = users.filter((u) => u._id !== userId));
-    return {
-        createUser, findAllUsers, findUserById, findUserByUsername, findUserByCredentials, updateUser, deleteUser
-    };
+export default function UsersDao() {
+    const createUser = () => { } // implemented later
+    const findAllUsers = () => model.find();
+    console.log("Users in DAO:", findAllUsers());
+    const findUserById = (userId) => model.findById(userId);
+    const findUserByUsername = (username) => model.findOne({ username: username });
+    const findUserByCredentials = (username, password) => model.findOne({ username, password });
+    const updateUser = (userId, user) => model.updateOne({ _id: userId }, { $set: user });
+    const deleteUser = (userId) => model.deleteOne({ _id: userId });
+    return { createUser, findAllUsers, findUserById, findUserByUsername, findUserByCredentials, updateUser, deleteUser };
 }
