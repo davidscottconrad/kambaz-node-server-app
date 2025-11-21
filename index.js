@@ -14,28 +14,25 @@ import mongoose from "mongoose";
 const app = express();
 const CONNECTION_STRING = process.env.DATABASE_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kambaz"
 mongoose.connect(CONNECTION_STRING);
-app.use(
-    cors({
-        credentials: true,
-        origin: function (origin, callback) {
-            // Allow requests with no origin (mobile apps, Postman, etc.)
-            if (!origin) return callback(null, true);
 
-            // Allow localhost for development
-            if (origin.includes('localhost')) return callback(null, true);
+app.use(cors({
+    origin: true,
+    credentials: true,
+}));
 
-            // Allow main production URL from env variable
-            if (origin === process.env.CLIENT_URL) return callback(null, true);
+// Remove: app.options('*', cors());
+// Generic preflight handler
+app.use((req, res, next) => {
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
+        res.header('Access-Control-Allow-Credentials', 'true');
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+        res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS');
+        return res.sendStatus(204);
+    }
+    next();
+});
 
-            // Allow all Vercel preview deployments
-            if (origin.match(/^https:\/\/kambaz-next-js-david-conrad.*\.vercel\.app$/)) {
-                return callback(null, true);
-            }
-
-            callback(new Error('Not allowed by CORS'));
-        }
-    })
-);
 const sessionOptions = {
     secret: process.env.SESSION_SECRET || "kambaz",
     resave: false,
@@ -50,7 +47,6 @@ if (process.env.SERVER_ENV !== "development") {
 }
 app.use(session(sessionOptions));
 app.use(express.json());
-
 
 UserRoutes(app, db);
 Lab5(app);

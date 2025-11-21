@@ -7,7 +7,9 @@ services:
     envVars:
       - key: SERVER_ENV
         value: production
+      - key: CLIENT_HOST_PREFIX
+        value: kambaz-next-js-david-conrad-
       - key: CLIENT_URL
-        value: kambaz-next-js-david-conrad-eonc5r2lx.vercel.app
+        value: https://kambaz-next-js-david-conrad-eonc5r2lx.vercel.app
       - key: SERVER_URL
         value: https://with-mongo-dwde.onrender.com
