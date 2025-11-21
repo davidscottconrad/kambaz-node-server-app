@@ -34,25 +34,17 @@ const sessionOptions = {
     secret: process.env.SESSION_SECRET || "kambaz",
     resave: false,
     saveUninitialized: false,
-    name: "sid",
 };
 
 if (process.env.SERVER_ENV !== "development") {
-    // derive cookie domain from SERVER_URL (must be a URL)
-    let cookieDomain;
-    try {
-        cookieDomain = new URL(process.env.SERVER_URL).hostname;
-    } catch (_) {
-        // ignore if SERVER_URL is not a valid URL
-    }
     sessionOptions.proxy = true;
     sessionOptions.cookie = {
         sameSite: "none",
         secure: true,
-        httpOnly: true,
-        ...(cookieDomain ? { domain: cookieDomain } : {}),
+        domain: process.env.SERVER_URL,
     };
 }
+
 
 app.use(session(sessionOptions));
 
