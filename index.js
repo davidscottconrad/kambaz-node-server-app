@@ -13,44 +13,57 @@ import session from "express-session";
 import mongoose from "mongoose";
 const app = express();
 
+// trust proxy only in production
 if (process.env.SERVER_ENV !== "development") {
     app.set('trust proxy', 1);
 }
-const CONNECTION_STRING = process.env.DATABASE_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kambaz"
+
+const CONNECTION_STRING = process.env.DATABASE_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kambaz";
 mongoose.connect(CONNECTION_STRING);
 
-app.use(cors({
-    origin: true,
-    credentials: true,
-}));
+// CORS first: allow only your frontend
+app.use(
+    cors({
+        credentials: true,
+        origin: process.env.CLIENT_URL || "http://localhost:3000",
+    })
+);
 
-// Remove: app.options('*', cors());
-// Generic preflight handler
-app.use((req, res, next) => {
-    if (req.method === 'OPTIONS') {
-        res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
-        res.header('Access-Control-Allow-Credentials', 'true');
-        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-        res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS');
-        return res.sendStatus(204);
-    }
-    next();
-});
-
+// Session (after CORS)
 const sessionOptions = {
     secret: process.env.SESSION_SECRET || "kambaz",
     resave: false,
     saveUninitialized: false,
+    name: "sid",
 };
+
 if (process.env.SERVER_ENV !== "development") {
+    // derive cookie domain from SERVER_URL (must be a URL)
+    let cookieDomain;
+    try {
+        cookieDomain = new URL(process.env.SERVER_URL).hostname;
+    } catch (_) {
+        // ignore if SERVER_URL is not a valid URL
+    }
     sessionOptions.proxy = true;
     sessionOptions.cookie = {
         sameSite: "none",
         secure: true,
+        httpOnly: true,
+        ...(cookieDomain ? { domain: cookieDomain } : {}),
     };
 }
+
 app.use(session(sessionOptions));
+
+// JSON parser after session
 app.use(express.json());
+
+// Optional: debug
+app.get("/api/session-test", (req, res) => {
+    req.session.count = (req.session.count || 0) + 1;
+    res.json({ id: req.sessionID, hasUser: !!req.session.currentUser, count: req.session.count });
+});
 
 UserRoutes(app, db);
 Lab5(app);
