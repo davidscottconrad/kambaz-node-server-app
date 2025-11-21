@@ -8,6 +8,6 @@ services:
       - key: SERVER_ENV
         value: production
       - key: CLIENT_URL
-        value: https://kambaz-next-js-david-conrad-l8f3affjx.vercel.app
+        value: kambaz-next-js-david-conrad-eonc5r2lx.vercel.app
       - key: SERVER_URL
         value: https://with-mongo-dwde.onrender.com
