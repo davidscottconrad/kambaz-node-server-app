@@ -4,14 +4,14 @@ export default function UserRoutes(app) {
     const dao = UsersDao();
 
     const createUser = async (req, res) => {
-        const newUser = await dao.createUser(req.body);
-        res.json(newUser);
+        const user = await dao.createUser(req.body);
+        res.json(user);
     };
 
+
     const deleteUser = async (req, res) => {
-        const userId = req.params.userId;
-        await dao.deleteUser(userId);
-        res.sendStatus(204);
+        const status = await dao.deleteUser(req.params.userId);
+        res.json(status);
     };
 
     const findAllUsers = async (req, res) => {

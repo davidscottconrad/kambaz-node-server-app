@@ -1,7 +1,11 @@
 import model from "./model.js";
 import { v4 as uuidv4 } from "uuid";
 export default function UsersDao() {
-    const createUser = () => { } // implemented later
+    const createUser = (user) => {
+        const newUser = { ...user, _id: uuidv4() };
+        return model.create(newUser);
+    }
+
     const findAllUsers = () => model.find();
     console.log("Users in DAO:", findAllUsers());
     const findUsersByRole = (role) => model.find({ role: role })
